@@ -2,7 +2,6 @@ package com.example.demo.controller;
 
 import com.example.demo.service.RetroTestService;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.manta.demo.service.TestService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.ResponseEntity;
@@ -28,15 +27,12 @@ public class HomeController {
     @Value("${greeting.message}")
     private String hi;
 
-    private final TestService testService;
-
     @GetMapping("/hello")
     public ResponseEntity<Map<String, Object>> testController() {
         Map<String, Object> hm = new HashMap<>();
         hm.put("name", "heejin");
         hm.put("age", 20);
         hm.put("message", hi);
-        hm.put("manta",  testService.getManta());
 
         return ResponseEntity.ok(hm);
     }
